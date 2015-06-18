@@ -32,13 +32,13 @@ module.exports = function (environment) {
     torii: {
       providers: {
         'google-api': {
-          clientId: '1064081317304-i7ab224ru8lm6e4dbf9k51vpfe1ds937.apps.googleusercontent.com'
+          clientId: ''
         },
         'facebook-api': {
-          appId: '1389118841313051'
+          appId: ''
         },
         'salesforce': {
-          clientId: '3MVG99qusVZJwhsklxpXkIhCoU6AgswudMSgm4EJn12d79fupe_fauayN9giDdQKW9iPZ0mSrLuJl9rwQXXCF'/*,
+          clientId: ''/*,
           redirectUri: 'http://localhost:9292/auth/salesforce/callback'*/
         }
       }
