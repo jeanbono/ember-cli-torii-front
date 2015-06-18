@@ -7,6 +7,9 @@ export default Ember.Controller.extend({
     },
     loginWithFacebook: function() {
       this.get('session').authenticate('authenticator:application', 'facebook-api');
+    },
+    loginWithSalesforce: function() {
+      this.get('session').authenticate('authenticator:application', 'salesforce');
     }
   }
 });

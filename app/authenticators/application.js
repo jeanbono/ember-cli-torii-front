@@ -5,29 +5,38 @@ import { request } from 'ic-ajax';
 
 export default ToriiAuthenticator.extend({
   providers: {
-    'google-api': function(authResponse) {
+    'google-api': function (authResponse) {
       return request('/auth/google_oauth2/callback', {
-        data: { code: authResponse.code },
+        data: {code: authResponse.code},
         type: 'POST'
       }).then((response) => {
-        return { accessToken: response.access_token };
+        return {accessToken: response.access_token};
       });
     },
-    'facebook-api': function(authResponse) {
+    'facebook-api': function (authResponse) {
       return request('/auth/facebook/callback', {
         type: 'GET'
       }).then((response) => {
-        return { accessToken: response.access_token };
+        return {accessToken: response.access_token};
+      });
+    },
+    'salesforce': function (authResponse) {
+      console.log(authResponse);
+      return request('/auth/salesforce/callback', {
+        data: {code: decodeURIComponent(authResponse.authorizationCode)},
+        type: 'POST'
+      }).then((response) => {
+        return {accessToken: response.access_token};
       });
     }
   },
 
-  authenticate: function(provider, options) {
+  authenticate: function (provider, options) {
     var _this = this;
-    return new Ember.RSVP.Promise(function(resolve, reject) {
-      _this.torii.open(provider, options || {}).then(function(authResponse) {
+    return new Ember.RSVP.Promise(function (resolve, reject) {
+      _this.torii.open(provider, options || {}).then(function (authResponse) {
         return _this.get('providers')[provider](authResponse);
-      }).then(function(data) {
+      }).then(function (data) {
         _this.resolveWith(provider, data, resolve);
       }, reject);
     });

@@ -36,6 +36,10 @@ module.exports = function (environment) {
         },
         'facebook-api': {
           appId: '1389118841313051'
+        },
+        'salesforce': {
+          clientId: '3MVG99qusVZJwhsklxpXkIhCoU6AgswudMSgm4EJn12d79fupe_fauayN9giDdQKW9iPZ0mSrLuJl9rwQXXCF'/*,
+          redirectUri: 'http://localhost:9292/auth/salesforce/callback'*/
         }
       }
     },
